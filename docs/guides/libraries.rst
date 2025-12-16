@@ -588,6 +588,21 @@ as described in :pep:`586`.
 Literals allow for more type specificity than their non-literal
 counterparts.
 
+Literal types are especially useful when a function accepts only a fixed
+set of constant values. This allows type checkers to validate inputs at
+call sites.
+
+Example::
+
+    from typing import Literal
+
+    def set_mode(mode: Literal["fast", "slow"]) -> None:
+        print(f"Running in {mode} mode")
+
+    set_mode("fast")   # OK
+    set_mode("other")  # Type checker error
+
+
 Constants
 ---------
 
